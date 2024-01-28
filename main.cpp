@@ -1,66 +1,116 @@
-// 변수의 정의
 #include <iostream>
-using std::cout;
-using std::endl;
-using std::cin;
-int main() {
-    //  변수선언은 c 랑 똑같다
-    char c;
-    double d;
-    float f;
-    // 포인터도 똑같음
-    int arr[10];
-    int *parr = arr;
 
-    int i;
-    int *pi = &i;
-    // for,문도 똑같음
-    for (int i = 0; i < 10; i++) {
-        std::cout << i << std::endl;
-    }
+int change_val(int *p) {
+    *p = 3;
 
-    // 다른 점은 변수를 최상단에서 선언하지 않아도 됌
-    // 코드 중간에 선언해도 된다는 얘기
-
-    int lucky_number = 3;
-    std::cout << "내 비밀 수를 맞추어 보세요~" << std::endl;
-
-    int user_input1;  // 사용자 입력
-
-    while (1) {
-        std::cout << "입력 : ";
-        // 입력받는 "것"
-        std::cin >> user_input1;
-        if (lucky_number == user_input1) {
-            std::cout << "맞추셨습니다~~" << std::endl;
-            break;
-        } else {
-            std::cout << "다시 생각해보세요~" << std::endl;
-        }
-    }
-    int user_input;
-    cout << "저의 정보를 표시해줍니다" << endl;
-    cout << "1. 이름 " << endl;
-    cout << "2. 나이 " << endl;
-    cout << "3. 성별 " << endl;
-    cin >> user_input;
-
-    switch (user_input) {
-        case 1:
-            cout << "Psi ! " << endl;
-            break;
-
-        case 2:
-            cout << "99 살" << endl;
-            break;
-
-        case 3:
-            cout << "남자" << endl;
-            break;
-
-        default:
-            cout << "궁금한게 없군요~" << endl;
-            break;
-    }
     return 0;
+}
+int main() {
+    // 레퍼런스 라는 것이 있음
+    // 참조자는 타입& 이름 = 참조변수이름으로 구성
+    // 이름을 바꿀 떄 참조변수이름 값도 바뀜
+    // 즉, 이름은 참조변수이름의 또 다른 이름이다
+
+    // 특징1, 처음에 누구의 별명이 될지 정해야함
+    // 즉, 한번 별명이 결정되면 바뀔 수 없음
+
+    /*
+    int a = 10;
+    int &another_a = a; // another_a 는 이제 a 의 참조자!
+
+    int b = 3;
+    another_a = b; // ??
+     에서 마지막 줄은 a=b와 같다
+     */
+    // 레퍼런스는 메모리 상에 존재하지 않을 수 도 있다.
+    // 어차피 별명과 같은 기능을 하니까.
+
+    /*
+     #include <iostream>
+
+    int change_val(int &p) {
+      p = 3;
+
+      return 0;
+    }
+    int main() {
+      int number = 5;
+
+      std::cout << number << std::endl;
+      change_val(number);
+      std::cout << number << std::endl;
+    }
+     에서 레퍼런스가 사용됨
+
+     cpp에서 입력을 받을 때
+     std::cin >> user_input;게 받음
+     c에서는
+     scanf("%d", &user_input);게 받음
+
+     cin이 레퍼런스로 user_input을 받았기 때문
+     리터럴 : 상수
+
+     int &ref = 4;
+     이건 안되는데
+
+     const int &ref = 4;
+     이건 가능
+
+     레퍼런스의 배열과 배열의 레퍼런스
+     - 씹어먹는 시리즈의 단골 코너 (ㅁㅁ의 00과 00의 ㅁㅁ)
+     - 3번 돌려볼 준비
+
+     int a, b;
+     int& arr[2] = {a, b};
+     이거 하면 에러가 난다. 왜냐?
+
+     레퍼런스의 레퍼런스,레퍼런스의 배열, 레퍼런스의 포인터는 존재할 수 없다.
+     라는 규칙이 있기 때문
+
+     배열의 주소는 *arr이고 첫번째 요소 주소는 *(arr+1)이다
+     하지만 레퍼런스는 메모리에 없기 때문에 저게 안됌
+
+     레퍼런스를 리턴하는 함수
+int function() {
+  int a = 2;
+  return a;
+}
+
+int main() {
+  int b = function();
+  return 0;
+}
+얘는 됨
+
+int& function() {
+  int a = 2;
+  return a;
+}
+     레퍼런스를 리턴하고 있지만
+     a는 사라짐
+     즉, 별명만 남게됨
+
+int main() {
+  int b = function();
+  b = 3;
+  return 0;
+}
+얘는 안됨
+
+int& function(int& a) {
+  a = 5;
+  return a;
+}
+
+int main() {
+  int b = 2;
+  int c = function(b);
+  return 0;
+}
+     */
+    int number = 5;
+
+    std::cout << number << std::endl;
+    change_val(&number);
+    std::cout << number << std::endl;
 }
