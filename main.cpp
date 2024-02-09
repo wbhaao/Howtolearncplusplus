@@ -1,37 +1,23 @@
 #include <iostream>
 
-#define HELLO 0x1
-#define MYNAME 0x2
-#define TIRED 0x4
-#define HEL 0x8
-#define COLD 0x10
-#define FIRE 0x20
-#define
-#define
+int add(int a, int b) {
+    return a+b;
+}
 
-// 가독성, 유지보수를 위해 사용하는 define
-
+// 함수
 int main() {
-    int isStatus = HELLO;
-    // 32가지
-    // 비트 연산 종류
-    // & : and
-    // | : or
-    // ^ : xor
-    // ~ : 반전
-    // << 왼쪽으로 이동
-    // >> 오른쪽으로 이동
-    isStatus |= MYNAME;
-    std::cout << isStatus << "\n";
-    if (isStatus & MYNAME)
-    {
-        std::cout << "hello\n";
-    }
-    // 특정 자리 비트 제거
-    // 오 진짜 된다 싱기
-    isStatus &= ~TIRED;
+    // 이건 변수
+    int a = 1;
 
+    // 모듈화!!
+    // 기능 1 = 함수 1
 
+    // 지역변수
+    // 전역변수
+    // 정적변수
+    // 외부변수
 
+    // 함수
+    int data = add(10, 20);
     return 0;
 }
