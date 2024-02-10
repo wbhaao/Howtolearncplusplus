@@ -30,5 +30,16 @@ int main(){
     //=10(그 주소로부터 4byte크기의 변수에 10을 대입한다.)
     *(iArr) = 10;
 
+    // cint : 100
+    // pointer로 강제접근하면 300바뀜
+    // 근데 const는 레지스터 메모리에 저장되서 100이 나옴
+    // volatile은 최적화를 하지 않아서 300이 나옴
+    const int cint = 100;
+    pInt = (int*)&cint;
+    *pInt = 300;
+    printf("%d", cint);
+    // 상수화
+
+
     return 0;
 }
