@@ -37,7 +37,10 @@ int main()
 
     int a;
     ++g_i;//함수가 끝나도 값이 유지,전역변수는 모든 함수에 사용가능
-
-
+    int ii = 3;
+    int* pInt = nullptr;
+    int* p = &ii;
+    *p = 11111;
+    printf("%d", ii);
     return 0;
 }
